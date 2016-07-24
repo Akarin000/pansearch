@@ -61,7 +61,7 @@ def GetPage(num):
         print names[j]
         print urls[j]
 
-GetPage(1)
+
 
 
 
