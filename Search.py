@@ -23,15 +23,15 @@ def SavePage(url,i):
             names[i] = name
         for url in urls:
             urls[urls.index(url)] = "http://45.32.249.213" + urls[urls.index(url)].split('target')[0][:-2]
-        print names[0]
-        print urls[0]
+        #print names[0]
+        #print urls[0]
         a = []
         a.append(names)
         a.append(urls)
         return a
 
 
-def SaveHtml(text,num = 4):
+def SaveHtml(text,num = 6):
     url = GetUrl(text)
     global Urls
     Urls = []
@@ -54,14 +54,19 @@ def GetPage(num):
     num = num-1
     if not Urls:
         LoadHtml()
+
     names = Urls[num][0]
     urls = Urls[num][1]
+
+    return (names,urls)
+    '''
     for i in names:
         j = names.index(i)
         print names[j]
         print urls[j]
+        '''
 
-
+#GetPage(1)
 
 
 
