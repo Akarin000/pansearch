@@ -4,6 +4,7 @@ import urllib2
 import re
 import pickle
 
+
 Urls = []
 def GetUrl(text):
     return "http://45.32.249.213/ss/?q="+text
@@ -54,10 +55,12 @@ def GetPage(num):
     num = num-1
     if not Urls:
         LoadHtml()
-
-    names = Urls[num][0]
-    urls = Urls[num][1]
-
+    try:
+        names = Urls[num][0]
+        urls = Urls[num][1]
+    except:
+        names = []
+        urls = []
     return (names,urls)
     '''
     for i in names:
