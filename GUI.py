@@ -94,6 +94,7 @@ class ChildWindow(QWidget):
         self.loadinggif = QMovie("loading.gif")
         self.loadinglabel = QLabel(self.loading)
         self.loadinglabel.setMovie(self.loadinggif)
+        self.loadinglabel.setFixedSize(600,600)
         self.loadinggif.start()
 
         self.layout3 = QGridLayout(self.pageButton)
@@ -118,7 +119,7 @@ class ChildWindow(QWidget):
 
         self.layout.removeWidget(self.result)
         self.result.deleteLater()
-        print "1"
+        #print "1"
         self.result = QWidget()
         self.layout.addWidget(self.result, 0, 0)
         self.layout2 = QGridLayout(self.result)
@@ -131,7 +132,7 @@ class ChildWindow(QWidget):
             self.layout2.addWidget(button,num,1)
 
             self.connect(button,SIGNAL("clicked()"),self.transfor(self.OpenPage,self.urls[num]))
-        print "2"
+        #print "2"
 
     def transfor(self,func,*arg,**kargv):
         return lambda: func(*arg,**kargv)
@@ -183,6 +184,10 @@ class ChildWindow(QWidget):
             if os.path.exists("result.pk"):
                 break
         self.emit(SIGNAL("signal1()"))
+
+    def closeEvent(self, QCloseEvent):
+        if  os.path.exists("result.pk"):
+            os.remove("result.pk")
 
 
 class myThread(QThread):
